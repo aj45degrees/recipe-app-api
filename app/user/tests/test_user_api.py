@@ -24,7 +24,7 @@ class PublicUserApiTests(TestCase):
     def test_create_valid_user_success(self):
         """Test creating user with valid payload is successful"""
         payload = {
-            'email': 'test@londonappdev.com',
+            'email': 'test@45degrees.dev',
             'password': 'testpass',
             'name': 'Test name'
         }
@@ -38,7 +38,7 @@ class PublicUserApiTests(TestCase):
     def test_user_exists(self):
         """Test creating a user that already exists fails"""
         payload = {
-            'email': 'test@londonappdev.com',
+            'email': 'test@45degrees.dev',
             'password': 'testpass',
             'name': 'Test',
         }
@@ -51,7 +51,7 @@ class PublicUserApiTests(TestCase):
     def test_password_too_short(self):
         """Test that the password must be more than 5 characters"""
         payload = {
-            'email': 'test@londonappdev.com',
+            'email': 'test@test@45degrees.dev',
             'password': 'pw',
             'name': 'Test',
         }
@@ -74,8 +74,8 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_invalid_credentials(self):
         """Test that token is not created if invalid credentials are given"""
-        create_user(email='test@londonappdev.com', password="testpass")
-        payload = {'email': 'test@londonappdev.com', 'password': 'wrong'}
+        create_user(email='test@test@45degrees.dev', password="testpass")
+        payload = {'email': 'test@test@45degrees.dev', 'password': 'wrong'}
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
@@ -83,7 +83,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_no_user(self):
         """Test that token is not created if user doesn't exist"""
-        payload = {'email': 'test@londonappdev.com', 'password': 'testpass'}
+        payload = {'email': 'test@test@45degrees.dev', 'password': 'testpass'}
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
