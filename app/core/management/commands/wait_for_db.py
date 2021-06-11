@@ -13,7 +13,7 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
-        """[summary]
+        """Handle the command
         """
         self.stdout.write('Waiting for database...')
         db_conn = None

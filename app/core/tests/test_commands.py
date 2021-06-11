@@ -15,7 +15,7 @@ class CommandsTestCase(TestCase):
             call_command('wait_for_db')
             self.assertEqual(gi.call_count, 1)
 
-    @patch('time.sleep', return_value=True)
+    @patch('time.sleep', return_value=None)
     def test_wait_for_db(self, ts):
         """Test waiting for db
 
