@@ -1,14 +1,13 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-# from django.test import Client
+from django.test import Client
 
 
 class AdminSiteTests(TestCase):
 
     def setUp(self):
-        """Test admin and normal user is created
-        """
+        """Test admin and normal user is created"""
         self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser(
             email='admin@45degrees.dev',
